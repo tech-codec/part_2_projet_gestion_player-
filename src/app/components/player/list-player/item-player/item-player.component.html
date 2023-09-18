@@ -1,0 +1,18 @@
+<div *ngIf="p" style="display: contents;">
+  <tr>
+    <td>{{p.id}}</td>
+    <td>{{p.playerName}}</td>
+    <td>{{p.email}}</td>
+    <td ><i *ngIf="p.selected" class="fa fa-check-square-o text-success"></i></td>
+    <td>{{p.gender}}</td>
+    <td>{{p.countryName}}</td>
+    <td>
+      <button class="btn sm btn-success" [ngClass]="p.selected?'btn-success':'btn-danger'" (click)="onChangeStatus(p)"> {{p.selected? 'Selected': 'Unselected'}}</button>
+    </td>
+    <td>
+      <button class="btn sm btn-success m-2"><i class="fa fa-pencil" (click)="onEdite(p)"></i></button>
+      <button class="btn  sm btn-danger m-2" (click)="onDeletePlayer(p)"> <i class="fa fa-trash"></i></button>
+    </td>
+  </tr>
+</div>
+

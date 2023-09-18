@@ -1,0 +1,3 @@
+<app-navbar-player (playerEvnentEmiter)="ActionEvent($event)"></app-navbar-player>
+
+<app-list-player [observablePlayer$]="playerObservable$" (playerEventEmiter)="ActionEvent($event)"></app-list-player>

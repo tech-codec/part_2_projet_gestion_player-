@@ -1,0 +1,32 @@
+<div class="container">
+  <ng-container *ngIf="(observablePlayer$ | async) as state" [ngSwitch]="state.dataStateStatus">
+    <ng-container *ngSwitchCase="stateStatus.LOADING">
+      <button class="btn btn-primary" type="button" disabled>
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        Loading...
+      </button>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="stateStatus.ERROR">
+      <div class="alert alert-danger" role="alert">
+        {{ state.dataStateError }}
+      </div>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="stateStatus.LOADED">
+      <table class="table table-striped mt-2">
+        <thead>
+          <tr>
+            <th>ID</th><th>PlayerName</th><th>Email</th><th>Selected</th><th>Gender</th><th>Country</th>
+          </tr>
+        </thead>
+        <tbody>
+          <app-item-player *ngFor="let p of state.dataState" [p]="p" (playerEventEmiter)="actionEvent($event)" style="display: contents;"></app-item-player>
+        </tbody>
+      </table>
+    </ng-container>
+
+
+  </ng-container>
+
+</div>
